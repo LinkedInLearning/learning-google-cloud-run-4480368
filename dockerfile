@@ -1,3 +1,6 @@
-FROM nginx:latest
-COPY index.html  /usr/share/nginx/html
-COPY forestbridge.jpg /usr/share/nginx/html
+FROM python:latest
+COPY .  /app
+WORKDIR /app
+RUN pip install -r requirements.txt
+ENV ORG_NAME "GCP_LERANING"
+ENTRYPOINT ["python","run.py"]
